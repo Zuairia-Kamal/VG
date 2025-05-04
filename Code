@@ -1,0 +1,39 @@
+import pandas as pd
+
+# Load the Excel file
+file_path = "vegetable_price_analysis.xlsx"  # Replace with the local path to your file
+data = pd.read_excel(file_path)
+
+# Display the first few rows of the data
+print("Preview of the data:")
+print(data.head())
+
+# Perform basic analysis
+print("\nSummary statistics:")
+print(data.describe())
+
+# Check for missing values
+print("\nMissing values in each column:")
+print(data.isnull().sum())
+
+# Example: Calculate average price of vegetables
+if 'Price' in data.columns:
+    average_price = data['Price'].mean()
+    print(f"\nThe average price of vegetables is: {average_price}")
+else:
+    print("\nThe file does not contain a 'Price' column.")
+
+# Example: Plot data (requires matplotlib)
+import matplotlib.pyplot as plt
+
+if 'Vegetable' in data.columns and 'Price' in data.columns:
+    plt.figure(figsize=(10, 6))
+    plt.bar(data['Vegetable'], data['Price'], color='green')
+    plt.xlabel('Vegetable')
+    plt.ylabel('Price')
+    plt.title('Vegetable Prices')
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.show()
+else:
+    print("\nThe file does not have the required columns for plotting.")
