@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Load the Excel file
-file_path = "vegetable_price_analysis.xlsx"  # Replace with the local path to your file
+file_path = "vegetable_price_analysis.xlsx"  
 data = pd.read_excel(file_path)
 
 # Display the first few rows of the data
